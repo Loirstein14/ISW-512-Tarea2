@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarea 2 – CSS3 | ISW-512</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- INICIO Encabezado -->
+    <header id="t2-header">
+        <h1 class="t2-title">ISW-512</h1>
+        <nav class="t2-nav">
+            <ul class="t2-list">
+                <li class="t2-item"><a href="#box-model">Box Model</a></li>
+                <li class="t2-item"><a href="#posicionamiento">Posicionamiento</a></li>
+                <li class="t2-item"><a href="#flexbox">Flexbox</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- FIN Encabezado -->
+
+    <main>
+
+        <!-- INICIO Sección 2.1: Box Model -->
+        <section id="box-model" class="t2-section">
+            <h2 class="t2-section-title">2.1 Modelo de Caja (Box Model)</h2>
+            <p class="t2-description">Todo elemento HTML es una caja compuesta por cuatro capas: <strong>content → padding → border → margin</strong>.</p>
+
+            <article>
+
+                <!-- Diagrama visual -->
+                <h3 class="t2-subtitle">Diagrama del Box Model</h3>
+                <div class="box-margin">
+                    <span class="box-label">margin</span>
+                    <div class="box-border">
+                        <span class="box-label">border</span>
+                        <div class="box-padding">
+                            <span class="box-label">padding</span>
+                            <div class="box-content">
+                                <span class="box-label">content</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cajas con distintas propiedades -->
+                <h3 class="t2-subtitle">Ejemplos de cajas</h3>
+                <div class="box-row">
+                    <div class="caja caja-a">
+                        <b>Caja A</b>
+                        <p>box-sizing: content-box (default)</p>
+                        <p>margin: 20px | padding: 20px | border: 3px solid</p>
+                    </div>
+                    <div class="caja caja-b">
+                        <b>Caja B</b>
+                        <p>box-sizing: content-box</p>
+                        <p>margin: 10px | padding: 30px | border: 5px dashed</p>
+                    </div>
+                    <div class="caja caja-c">
+                        <b>Caja C</b>
+                        <p>box-sizing: border-box</p>
+                        <p>padding y border incluidos dentro del width</p>
+                    </div>
+                </div>
+
+                <!-- Block vs Inline -->
+                <h3 class="t2-subtitle">Elementos de Bloque vs En Línea</h3>
+                <p>Los elementos <strong>de bloque</strong> ocupan todo el ancho disponible:</p>
+                <div class="demo-block">div — elemento de bloque</div>
+                <div class="demo-block">otro div — empieza en nueva línea</div>
+
+                <p>Los elementos <strong>en línea</strong> solo ocupan el espacio de su contenido:</p>
+                <p>
+                    <span class="demo-inline">span 1</span>
+                    <span class="demo-inline">span 2</span>
+                    <span class="demo-inline">span 3</span>
+                </p>
+
+                <p>Con <code>display: inline-block</code> se combinan ambos comportamientos:</p>
+                <p>
+                    <span class="demo-inline-block">inline-block 1</span>
+                    <span class="demo-inline-block">inline-block 2</span>
+                    <span class="demo-inline-block">inline-block 3</span>
+                </p>
+
+            </article>
+        </section>
+        <!-- FIN Sección 2.1: Box Model -->
+
+        <!-- INICIO Sección 2.2: Posicionamiento -->
+        <section id="posicionamiento" class="t2-section">
+            <h2 class="t2-section-title">2.2 Visualización y Posicionamiento</h2>
+            <p class="t2-description">Propiedades CSS para controlar cómo se ubican y muestran los elementos.</p>
+
+            <article>
+
+                <!-- Position -->
+                <h3 class="t2-subtitle">A. Position</h3>
+                <div class="pos-container">
+                    <div class="pos-static">position: static — flujo normal</div>
+                    <div class="pos-relative">position: relative — desplazado 15px abajo y a la derecha</div>
+                    <div class="pos-abs-wrapper">
+                        <span class="small-label">Contenedor con position: relative</span>
+                        <div class="pos-absolute">position: absolute — esquina superior derecha</div>
+                        <div class="pos-placeholder">elemento de referencia</div>
+                    </div>
+                    <p class="pos-note">⚠️ <code>position: fixed</code> — el botón dorado fijo está anclado a la ventana del navegador (abajo a la derecha).</p>
+                </div>
+                <div class="pos-fixed">fixed</div>
+
+                <!-- Float y Clear -->
+                <h3 class="t2-subtitle">B. Float y Clear</h3>
+                <div class="float-demo">
+                    <div class="float-left">float: left</div>
+                    <div class="float-right">float: right</div>
+                    <p>Este texto fluye alrededor de los elementos flotantes ocupando el espacio disponible entre ambos.</p>
+                    <div class="clear-demo">clear: both — corta el flujo flotante</div>
+                </div>
+
+                <!-- Display -->
+                <h3 class="t2-subtitle">C. Display</h3>
+                <div class="display-demo">
+                    <div class="d-block">display: block</div>
+                    <span class="d-inline">inline</span>
+                    <span class="d-inline">inline</span>
+                    <br><br>
+                    <span class="d-inline-block">inline-block</span>
+                    <span class="d-inline-block">inline-block</span>
+                    <p class="d-none-note">display: none → <span class="d-none">OCULTO</span> este elemento no ocupa espacio ni se renderiza.</p>
+                </div>
+
+                <!-- Overflow -->
+                <h3 class="t2-subtitle">D. Overflow</h3>
+                <div class="overflow-grid">
+                    <div>
+                        <p><code>visible</code></p>
+                        <div class="of-box of-visible">Contenido que desborda sin restricción fuera del contenedor definido.</div>
+                    </div>
+                    <div>
+                        <p><code>hidden</code></p>
+                        <div class="of-box of-hidden">Contenido que desborda pero queda recortado fuera del contenedor.</div>
+                    </div>
+                    <div>
+                        <p><code>scroll</code></p>
+                        <div class="of-box of-scroll">Contenido que desborda y se puede desplazar, scroll siempre visible.</div>
+                    </div>
+                    <div>
+                        <p><code>auto</code></p>
+                        <div class="of-box of-auto">Contenido que desborda y el scroll aparece solo cuando es necesario.</div>
+                    </div>
+                </div>
+
+                <!-- Visibility -->
+                <h3 class="t2-subtitle">E. Visibility</h3>
+                <div class="vis-demo">
+                    <div class="vis-visible">visibility: visible — elemento visible</div>
+                    <div class="vis-hidden">visibility: hidden — OCULTO pero sigue ocupando su espacio</div>
+                    <div class="vis-visible">Este elemento respeta el espacio del elemento oculto de arriba</div>
+                </div>
+
+                <!-- Z-Index -->
+                <h3 class="t2-subtitle">F. Z-Index</h3>
+                <p>Mayor z-index = más al frente en el apilamiento.</p>
+                <div class="zindex-demo">
+                    <div class="z-box z1">z-index: 1</div>
+                    <div class="z-box z2">z-index: 2</div>
+                    <div class="z-box z3">z-index: 3 (frente)</div>
+                </div>
+
+            </article>
+        </section>
+        <!-- FIN Sección 2.2: Posicionamiento -->
+
+        <!-- INICIO Sección 2.3: Flexbox -->
+        <section id="flexbox" class="t2-section">
+            <h2 class="t2-section-title">2.3 Flexbox en CSS3</h2>
+            <p class="t2-description">Flexbox permite crear layouts flexibles con control preciso sobre alineamiento y distribución del espacio.</p>
+
+            <article>
+
+                <!-- flex-direction -->
+                <h3 class="t2-subtitle">flex-direction</h3>
+                <p><code>row</code> — eje horizontal (default)</p>
+                <div class="fx-demo fx-row">
+                    <div class="fx-item">1</div>
+                    <div class="fx-item">2</div>
+                    <div class="fx-item">3</div>
+                </div>
+                <p><code>column</code> — eje vertical</p>
+                <div class="fx-demo fx-col">
+                    <div class="fx-item">1</div>
+                    <div class="fx-item">2</div>
+                    <div class="fx-item">3</div>
+                </div>
+
+                <!-- flex-wrap -->
+                <h3 class="t2-subtitle">flex-wrap</h3>
+                <p><code>wrap</code> — los items saltan de línea si no caben</p>
+                <div class="fx-demo fx-wrap">
+                    <div class="fx-item fx-wide">A</div>
+                    <div class="fx-item fx-wide">B</div>
+                    <div class="fx-item fx-wide">C</div>
+                    <div class="fx-item fx-wide">D</div>
+                    <div class="fx-item fx-wide">E</div>
+                    <div class="fx-item fx-wide">F</div>
+                </div>
+
+                <!-- justify-content -->
+                <h3 class="t2-subtitle">justify-content</h3>
+                <div class="fx-grid">
+                    <div>
+                        <p><code>flex-start</code></p>
+                        <div class="fx-demo jc-start">
+                            <div class="fx-item">1</div><div class="fx-item">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>center</code></p>
+                        <div class="fx-demo jc-center">
+                            <div class="fx-item">1</div><div class="fx-item">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>space-between</code></p>
+                        <div class="fx-demo jc-between">
+                            <div class="fx-item">1</div><div class="fx-item">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>space-around</code></p>
+                        <div class="fx-demo jc-around">
+                            <div class="fx-item">1</div><div class="fx-item">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- align-items -->
+                <h3 class="t2-subtitle">align-items</h3>
+                <div class="fx-grid">
+                    <div>
+                        <p><code>flex-start</code></p>
+                        <div class="fx-demo fx-tall ai-start">
+                            <div class="fx-item">1</div><div class="fx-item fx-taller">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>center</code></p>
+                        <div class="fx-demo fx-tall ai-center">
+                            <div class="fx-item">1</div><div class="fx-item fx-taller">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>flex-end</code></p>
+                        <div class="fx-demo fx-tall ai-end">
+                            <div class="fx-item">1</div><div class="fx-item fx-taller">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                    <div>
+                        <p><code>stretch</code></p>
+                        <div class="fx-demo fx-tall ai-stretch">
+                            <div class="fx-item">1</div><div class="fx-item fx-taller">2</div><div class="fx-item">3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- align-content -->
+                <h3 class="t2-subtitle">align-content</h3>
+                <p>Controla el espacio entre filas cuando hay <code>flex-wrap</code> activo.</p>
+                <div class="fx-demo fx-wrap ac-space-between fx-tall-container">
+                    <div class="fx-item fx-wide">A</div>
+                    <div class="fx-item fx-wide">B</div>
+                    <div class="fx-item fx-wide">C</div>
+                    <div class="fx-item fx-wide">D</div>
+                    <div class="fx-item fx-wide">E</div>
+                    <div class="fx-item fx-wide">F</div>
+                </div>
+
+                <!-- Flex Items -->
+                <h3 class="t2-subtitle">Flex Items: order, flex-grow, flex-shrink, flex-basis, align-self</h3>
+                <div class="fx-demo fx-items-demo">
+                    <div class="fx-item item-o3">order: 3</div>
+                    <div class="fx-item item-o1">order: 1</div>
+                    <div class="fx-item item-grow">flex-grow: 2</div>
+                    <div class="fx-item item-shrink">flex-shrink: 0</div>
+                    <div class="fx-item item-self">align-self: flex-end</div>
+                </div>
+
+                <!-- Flex Responsive -->
+                <h3 class="t2-subtitle">Flex Responsive</h3>
+                <p>Las tarjetas pasan de fila a columna en pantallas pequeñas usando <code>flex-wrap</code> y media queries.</p>
+                <div class="fx-cards">
+                    <div class="fx-card">🎨 Diseño</div>
+                    <div class="fx-card">💻 Desarrollo</div>
+                    <div class="fx-card">📱 Responsive</div>
+                    <div class="fx-card">🚀 Performance</div>
+                </div>
+
+            </article>
+        </section>
+        <!-- FIN Sección 2.3: Flexbox -->
+
+    </main>
+
+    <!-- INICIO Footer -->
+    <footer id="t2-footer">
+        <p>&copy; 2025 &mdash; ISW-512 Diseño de Aplicaciones Web &mdash; Universidad Técnica Nacional</p>
+    </footer>
+    <!-- FIN Footer -->
+
+</body>
+</html>
